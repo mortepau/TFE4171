@@ -1,0 +1,75 @@
+***********************************************************
+Simulation Log - Q U E S  T I O N S
+***********************************************************
+
+/* +define+overlap
+
+run -all
+KERNEL:         10  clk=1 cstart=0 req=0 gnt=0
+KERNEL:         30  clk=1 cstart=1 req=0 gnt=0
+KERNEL:         30  		 test_overlap_nonoverlap FAIL
+
+		Q: WHY DOES THE PROPERTY FAIL at 30?
+
+KERNEL:         50  clk=1 cstart=1 req=1 gnt=0
+KERNEL:         70  clk=1 cstart=0 req=0 gnt=0
+KERNEL:         90  clk=1 cstart=0 req=0 gnt=1
+KERNEL:         90  		 test_overlap_nonoverlap PASS
+
+		Q: WHY DOES THE PROPERTY PASS at 90?
+
+KERNEL:        110  clk=1 cstart=1 req=1 gnt=0
+KERNEL:        130  clk=1 cstart=1 req=1 gnt=0
+KERNEL:        150  clk=1 cstart=1 req=1 gnt=1
+KERNEL:        150  		 test_overlap_nonoverlap PASS
+
+		Q: WHY DOES THE PROPERTY PASS at 150?
+
+KERNEL:        170  clk=1 cstart=0 req=1 gnt=0
+KERNEL:        170  		 test_overlap_nonoverlap FAIL
+
+		Q: WHY DOES THE PROPERTY FAIL at 170?
+
+KERNEL:        190  clk=1 cstart=0 req=0 gnt=0
+KERNEL:        190  		 test_overlap_nonoverlap FAIL
+
+		Q: WHY DOES THE PROPERTY FAIL at 190?
+
+KERNEL:        210  clk=1 cstart=0 req=0 gnt=1
+
+*/
+
+/* +define+nonoverlap
+
+run -all
+KERNEL:         10  clk=1 cstart=0 req=0 gnt=0
+KERNEL:         30  clk=1 cstart=1 req=0 gnt=0
+KERNEL:         50  clk=1 cstart=1 req=1 gnt=0
+KERNEL:         70  clk=1 cstart=0 req=0 gnt=0
+KERNEL:         70  		 test_overlap_nonoverlap FAIL
+
+		Q: WHY DOES THE PROPERTY FAIL at 70?
+
+KERNEL:         90  clk=1 cstart=0 req=0 gnt=1
+KERNEL:         90  		 test_overlap_nonoverlap PASS
+
+		Q: WHY DOES THE PROPERTY PASS at 90?
+
+KERNEL:        110  clk=1 cstart=1 req=1 gnt=0
+KERNEL:        130  clk=1 cstart=1 req=1 gnt=0
+KERNEL:        150  clk=1 cstart=1 req=1 gnt=1
+KERNEL:        170  clk=1 cstart=0 req=1 gnt=0
+KERNEL:        170  		 test_overlap_nonoverlap FAIL
+
+		Q: WHY DOES THE PROPERTY FAIL at 170?
+
+KERNEL:        190  clk=1 cstart=0 req=0 gnt=0
+KERNEL:        190  		 test_overlap_nonoverlap FAIL
+
+		Q: WHY DOES THE PROPERTY FAIL at 190?
+
+KERNEL:        210  clk=1 cstart=0 req=0 gnt=1
+KERNEL:        210  		 test_overlap_nonoverlap PASS
+
+		Q: WHY DOES THE PROPERTY PASS at 210?
+*/

@@ -1,0 +1,44 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 d/home/courses/desdigsys2/2020s/dds220s05/ex-1/lab2
+T_opt
+!s110 1579791035
+VII21mo>z:<fXh:kePIl4X1
+04 23 4 work test_overlap_nonoverlap fast 0
+=1-90b11c1d54d8-5e29b2bb-15328-276e
+o-quiet -auto_acc_if_foreign -work work
+Z1 tCvgOpt 0
+n@_opt
+OL;O;10.5c;63
+vtest_overlap_nonoverlap
+DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+!s110 1579791033
+!i10b 1
+!s100 ;oa3YDz1P00Ed]d<cePMH2
+Ihk@V24X2WRV@<2_RN@B];2
+VDg1SIo80bB@j0V0VzS_@n1
+!s105 test_overlap_nonoverlap_sv_unit
+S1
+R0
+w1579790969
+8test_overlap_nonoverlap.sv
+Ftest_overlap_nonoverlap.sv
+L0 1
+OL;L;10.5c;63
+r1
+!s85 0
+31
+!s108 1579791032.000000
+!s107 test_overlap_nonoverlap.sv|
+!s90 -sv|test_overlap_nonoverlap.sv|+define+overlap|
+!i113 0
+o-sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+!s92 -sv +define+overlap -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R1
