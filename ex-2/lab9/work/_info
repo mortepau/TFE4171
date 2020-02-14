@@ -1,0 +1,162 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 d/home/courses/desdigsys2/2020s/dds220s05/ex-2/lab9
+T_opt
+!s110 1581683034
+V;>IU>YA7oF@;N5RU@`CY40
+04 8 4 work test_top fast 0
+=1-90b11c1d54d8-5e46915a-1369d-7b23
+o-quiet -auto_acc_if_foreign -work work
+Z1 tCvgOpt 0
+n@_opt
+OL;O;10.5c;63
+Ealu
+Z2 w1581610337
+Z3 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
+Z4 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z5 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
+R0
+Z6 8alu.vhd
+Z7 Falu.vhd
+l0
+L5
+V?VCQa7li03<JODbATi?062
+!s100 D@0FW?FADD::^MmB[OUHL1
+Z8 OL;C;10.5c;63
+32
+Z9 !s110 1581683032
+!i10b 1
+Z10 !s108 1581683031.000000
+Z11 !s90 alu.vhd|
+Z12 !s107 alu.vhd|
+!i113 0
+Z13 tExplicit 1 CvgOpt 0
+Abehavioral
+R3
+R4
+R5
+DEx4 work 3 alu 0 22 ?VCQa7li03<JODbATi?062
+l18
+L13
+VZ9M>TJjNgX0<PiFXdF7^B2
+!s100 H5>CD^jhPT6>WSd]<mL522
+R8
+32
+R9
+!i10b 1
+R10
+R11
+R12
+!i113 0
+R13
+vex2_1
+Z14 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+Z15 !s110 1581683031
+!i10b 1
+!s100 [KDO>;cHY;DEFa;VgZ7PJ2
+IHeZU3:C?L`FRlOQ>QzmEK2
+Z16 VDg1SIo80bB@j0V0VzS_@n1
+!s105 ex22d1_v_unit
+S1
+R0
+w1581611048
+8ex2-1.v
+Fex2-1.v
+L0 12
+Z17 OL;L;10.5c;63
+r1
+!s85 0
+31
+R10
+Z18 !s107 test-top.sv|top-property.sv|top.sv|ex2-1.v|
+Z19 !s90 -sv|ex2-1.v|top.sv|top-property.sv|test-top.sv|+acc|+cover|+define+check5|
+!i113 0
+Z20 !s102 +cover
+Z21 o-sv +acc +cover -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+Z22 !s92 -sv +acc +cover +define+check5 -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R1
+vtest_top
+R14
+R15
+!i10b 1
+!s100 MBDGORT6G3bln`g1`@XeW2
+IoG1V8VbiGh:_3d7@P`OV20
+R16
+!s105 test2dtop_sv_unit
+S1
+R0
+w1581682989
+8test-top.sv
+Ftest-top.sv
+L0 1
+R17
+r1
+!s85 0
+31
+R10
+R18
+R19
+!i113 0
+R20
+R21
+R22
+R1
+vtop
+R14
+R15
+!i10b 1
+!s100 m02T5W`mJCId1:Boz7H_?1
+IeUBEecOIajVIUgTcCTaco0
+R16
+!s105 top_sv_unit
+S1
+R0
+w1581615415
+8top.sv
+Ftop.sv
+L0 2
+R17
+r1
+!s85 0
+31
+R10
+R18
+R19
+!i113 0
+R20
+R21
+R22
+R1
+vtop_property
+R14
+R15
+!i10b 1
+!s100 O`DMh=g`<I[S7;NHGTMal2
+IOhXc^?[1:Nhb>B]c=TcSA1
+R16
+!s105 top2dproperty_sv_unit
+S1
+R0
+w1581611605
+8top-property.sv
+Ftop-property.sv
+L0 11
+R17
+r1
+!s85 0
+31
+R10
+R18
+R19
+!i113 0
+R20
+R21
+R22
+R1

@@ -1,0 +1,184 @@
+# vsim -c -coverage alu_tb -do "run 1000ns; coverage report -memory -cvg -details -file coverage_rep.txt;exit" 
+# Start time: 19:05:51 on Feb 13,2020
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Warning: alu_tb.sv(56): (vopt-2244) Variable 'cg_inst' is implicitly static. You must either explicitly declare it as static or automatic
+# or remove the initialization in the declaration of variable.
+# ** Warning: alu_tb.sv(22): (vopt-2240) Treating stand-alone use of function 'randomize' as an implicit VOID cast.
+# //  Questa Sim-64
+# //  Version 10.5c linux_x86_64 Jul 20 2016
+# //
+# //  Copyright 1991-2016 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  QuestaSim and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading sv_std.std
+# Loading work.alu_tb_sv_unit(fast)
+# Loading work.alu_tb(fast)
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.alu(behavioral)#1
+# run 1000ns
+#         10  alu_tb:: clk=1 a=00000000 b=00000000 op=000 r=00000000
+#          2  alu_packet:: a=00111001, b=01110110, op=010
+# 
+#         30  alu_tb:: clk=1 a=00111001 b=01110110 op=010 r=00000000
+#          4  alu_packet:: a=01110000, b=00010100, op=110
+# 
+#         50  alu_tb:: clk=1 a=01110000 b=00010100 op=110 r=11000110
+#          6  alu_packet:: a=00000010, b=10000111, op=010
+# 
+#         70  alu_tb:: clk=1 a=00000010 b=10000111 op=010 r=01110100
+#          8  alu_packet:: a=00010010, b=01000111, op=010
+# 
+#         90  alu_tb:: clk=1 a=00010010 b=01000111 op=010 r=11111101
+#         10  alu_packet:: a=00010110, b=00101001, op=000
+# 
+#        110  alu_tb:: clk=1 a=00010110 b=00101001 op=000 r=11101101
+#         12  alu_packet:: a=01011110, b=00011010, op=000
+# 
+#        130  alu_tb:: clk=1 a=01011110 b=00011010 op=000 r=00111111
+#         14  alu_packet:: a=00011111, b=00001111, op=011
+# 
+#        150  alu_tb:: clk=1 a=00011111 b=00001111 op=011 r=01111000
+#         16  alu_packet:: a=00011110, b=10000010, op=010
+# 
+#        170  alu_tb:: clk=1 a=00011110 b=10000010 op=010 r=11110000
+#         18  alu_packet:: a=00011101, b=01111001, op=010
+# 
+#        190  alu_tb:: clk=1 a=00011101 b=01111001 op=010 r=11100001
+#         20  alu_packet:: a=01110001, b=00101000, op=011
+# 
+#        210  alu_tb:: clk=1 a=01110001 b=00101000 op=011 r=11100010
+#         22  alu_packet:: a=00011101, b=00100111, op=011
+# 
+#        230  alu_tb:: clk=1 a=00011101 b=00100111 op=011 r=11011111
+#         24  alu_packet:: a=00111010, b=11010011, op=001
+# 
+#        250  alu_tb:: clk=1 a=00111010 b=11010011 op=001 r=11111010
+#         26  alu_packet:: a=00010001, b=00010101, op=011
+# 
+#        270  alu_tb:: clk=1 a=00010001 b=00010101 op=011 r=01100111
+#         28  alu_packet:: a=01110111, b=00010100, op=100
+# 
+#        290  alu_tb:: clk=1 a=01110111 b=00010100 op=100 r=11101110
+#         30  alu_packet:: a=01100111, b=00110011, op=100
+# 
+#        310  alu_tb:: clk=1 a=01100111 b=00110011 op=100 r=10001000
+#         32  alu_packet:: a=00110101, b=10001101, op=100
+# 
+#        330  alu_tb:: clk=1 a=00110101 b=10001101 op=100 r=10001000
+#         34  alu_packet:: a=01110100, b=10000010, op=010
+# 
+#        350  alu_tb:: clk=1 a=01110100 b=10000010 op=010 r=01000010
+#         36  alu_packet:: a=01111011, b=01111001, op=100
+# 
+#        370  alu_tb:: clk=1 a=01111011 b=01111001 op=100 r=10001011
+#         38  alu_packet:: a=00000011, b=00011011, op=110
+# 
+#        390  alu_tb:: clk=1 a=00000011 b=00011011 op=110 r=10000100
+#         40  alu_packet:: a=00100110, b=10010001, op=010
+# 
+#        410  alu_tb:: clk=1 a=00100110 b=10010001 op=010 r=00011011
+#         42  alu_packet:: a=00001101, b=01100010, op=001
+# 
+#        430  alu_tb:: clk=1 a=00001101 b=01100010 op=001 r=11011001
+#         44  alu_packet:: a=00001101, b=00111001, op=001
+# 
+#        450  alu_tb:: clk=1 a=00001101 b=00111001 op=001 r=10101011
+#         46  alu_packet:: a=01111001, b=01100010, op=110
+# 
+#        470  alu_tb:: clk=1 a=01111001 b=01100010 op=110 r=11010100
+#         48  alu_packet:: a=01000000, b=01100111, op=010
+# 
+#        490  alu_tb:: clk=1 a=01000000 b=01100111 op=010 r=01111011
+#         50  alu_packet:: a=01111001, b=10100101, op=000
+# 
+#        510  alu_tb:: clk=1 a=01111001 b=10100101 op=000 r=10111111
+#         52  alu_packet:: a=00001100, b=01101111, op=000
+# 
+#        530  alu_tb:: clk=1 a=00001100 b=01101111 op=000 r=00011110
+#         54  alu_packet:: a=01110001, b=01011010, op=010
+# 
+#        550  alu_tb:: clk=1 a=01110001 b=01011010 op=010 r=01111011
+#         56  alu_packet:: a=00011110, b=01110001, op=000
+# 
+#        570  alu_tb:: clk=1 a=00011110 b=01110001 op=000 r=10001110
+#         58  alu_packet:: a=01001110, b=01000000, op=011
+# 
+#        590  alu_tb:: clk=1 a=01001110 b=01000000 op=011 r=10001111
+#         60  alu_packet:: a=01010000, b=01110010, op=110
+# 
+#        610  alu_tb:: clk=1 a=01010000 b=01110010 op=110 r=10111111
+#         62  alu_packet:: a=00101100, b=00011010, op=011
+# 
+#        630  alu_tb:: clk=1 a=00101100 b=00011010 op=011 r=01110010
+#         64  alu_packet:: a=00110010, b=10101101, op=011
+# 
+#        650  alu_tb:: clk=1 a=00110010 b=10101101 op=011 r=11110111
+#         66  alu_packet:: a=01011010, b=01100001, op=010
+# 
+#        670  alu_tb:: clk=1 a=01011010 b=01100001 op=010 r=11011111
+#         68  alu_packet:: a=00001001, b=00101011, op=011
+# 
+#        690  alu_tb:: clk=1 a=00001001 b=00101011 op=011 r=10100101
+#         70  alu_packet:: a=00010011, b=11010100, op=010
+# 
+#        710  alu_tb:: clk=1 a=00010011 b=11010100 op=010 r=11110110
+#         72  alu_packet:: a=00101101, b=11011000, op=010
+# 
+#        730  alu_tb:: clk=1 a=00101101 b=11011000 op=010 r=11101100
+#         74  alu_packet:: a=01000110, b=01100011, op=011
+# 
+#        750  alu_tb:: clk=1 a=01000110 b=01100011 op=011 r=11010010
+#         76  alu_packet:: a=00000100, b=11111000, op=011
+# 
+#        770  alu_tb:: clk=1 a=00000100 b=11111000 op=011 r=10111101
+#         78  alu_packet:: a=01111111, b=11101110, op=001
+# 
+#        790  alu_tb:: clk=1 a=01111111 b=11101110 op=001 r=11111111
+#         80  alu_packet:: a=00110100, b=00110001, op=010
+# 
+#        810  alu_tb:: clk=1 a=00110100 b=00110001 op=010 r=10010001
+#         82  alu_packet:: a=00111110, b=01001110, op=101
+# 
+#        830  alu_tb:: clk=1 a=00111110 b=01001110 op=101 r=11001011
+#         84  alu_packet:: a=01001010, b=10010110, op=010
+# 
+#        850  alu_tb:: clk=1 a=01001010 b=10010110 op=010 r=00001110
+#         86  alu_packet:: a=01010101, b=01110111, op=011
+# 
+#        870  alu_tb:: clk=1 a=01010101 b=01110111 op=011 r=10110101
+#         88  alu_packet:: a=01111100, b=01101110, op=010
+# 
+#        890  alu_tb:: clk=1 a=01111100 b=01101110 op=010 r=10101010
+#         90  alu_packet:: a=01010100, b=11001001, op=010
+# 
+#        910  alu_tb:: clk=1 a=01010100 b=11001001 op=010 r=10000011
+#         92  alu_packet:: a=00010010, b=01001100, op=011
+# 
+#        930  alu_tb:: clk=1 a=00010010 b=01001100 op=011 r=10101011
+#         94  alu_packet:: a=01101111, b=11011110, op=010
+# 
+#        950  alu_tb:: clk=1 a=01101111 b=11011110 op=010 r=11111111
+#         96  alu_packet:: a=00000010, b=01110011, op=001
+# 
+#        970  alu_tb:: clk=1 a=00000010 b=01110011 op=001 r=10010000
+#         98  alu_packet:: a=01001011, b=10011010, op=100
+# 
+#        990  alu_tb:: clk=1 a=01001011 b=10011010 op=100 r=10001111
+# Coverage = 44.49 %
+#        100  alu_packet:: a=01000010, b=00111100, op=110
+# 
+#  coverage report -memory -cvg -details -file coverage_rep.txt
+# exit
+# End time: 19:05:55 on Feb 13,2020, Elapsed time: 0:00:04
+# Errors: 0, Warnings: 2
