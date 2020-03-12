@@ -1,0 +1,69 @@
+// @lang=sva @ts=2
+
+module busarbiter_properties(clk, reset, bus_req, bus_grant, bus_ack, state_s, prio_req); 
+
+input logic clk;
+input logic reset;
+
+input logic [2:0] bus_req;
+input logic [2:0] bus_grant;
+input logic bus_ack; 
+
+input state_s; 
+
+input logic [2:0] prio_req; 
+
+parameter READY = 1'b0;
+parameter BUSY  = 1'b1;
+
+parameter NO_REQUEST = 3'b000; 
+parameter NO_GRANT = 3'b000; 
+
+// your definitions...
+property p_reset;
+	reset |-> bus_grant == NO_GRANT ##0 state_s == READY;
+endproperty
+
+property p_at_most_one_grant;
+	$onehot0(bus_grant);
+endproperty
+
+property p_grant_stable;
+	($rose(bus_grant[0]) || $rose(bus_grant[1]) || $rose(bus_grant[2])) |=> $stable(bus_grant) [*0:$] ##0 bus_ack;
+endproperty
+
+property p_arbitration_master0;
+	bus_req[0] ##0 state_s == READY |=> bus_grant[0];	
+endproperty
+
+property p_arbitration_master1;
+	bus_req[1:0] == 2'b10 ##0 state_s == READY |=> bus_grant[1];
+endproperty
+
+property p_arbitration_master2;
+	bus_req[2:0] == 3'b100 ##0 state_s == READY |=> bus_grant[2];
+endproperty
+
+property p_grant_master1;
+	$rose(bus_grant[1]) implies $past(bus_req[1:0]) == 2'b10;
+endproperty
+
+property p_grant_master2;
+	$rose(bus_grant[2]) implies $past(bus_req) == 3'b100;
+endproperty
+
+a_reset: assert property(@(posedge clk) p_reset);
+a_at_most_one_grant: assert property(@(posedge clk) disable iff (reset) p_at_most_one_grant);
+a_grant_stable: assert property(@(posedge clk) disable iff (reset) p_grant_stable);
+a_arbitration_master0: assert property(@(posedge clk) disable iff (reset) p_arbitration_master0);
+a_arbitration_master1: assert property(@(posedge clk) disable iff (reset) p_arbitration_master1);
+a_arbitration_master2: assert property(@(posedge clk) disable iff (reset) p_arbitration_master2);
+a_grant_master1: assert property(@(posedge clk) disable iff (reset) p_grant_master1);
+a_grant_master2: assert property(@(posedge clk) disable iff (reset) p_grant_master2);
+
+// ...
+
+endmodule
+
+bind busarbiter busarbiter_properties(.*); 
+

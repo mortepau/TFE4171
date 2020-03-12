@@ -1,0 +1,68 @@
+// @lang=sva @ts=2
+
+module atm_property_suite(clk, error_i, multiple_i, correct_o, dismiss_o);
+
+input logic clk;
+input logic error_i;
+input logic multiple_i;
+input logic correct_o;
+input logic dismiss_o;
+
+// sequence definitions
+sequence seq_not_correct_and_dismiss;
+	!correct_o ##0 !dismiss_o;
+endsequence
+
+sequence seq_correct_and_dismiss;
+	correct_o ##0 dismiss_o;
+endsequence
+
+sequence seq_error_free;
+	!error_i ##0 !multiple_i;
+endsequence
+
+sequence seq_multiple;
+	error_i ##0 multiple_i;
+endsequence
+
+sequence seq_first_error;
+	!error_i ##1 error_i;
+endsequence
+
+sequence seq_second_error;
+	error_i ##1 error_i;
+endsequence
+
+// property definitions
+property p_not_both;
+	not seq_correct_and_dismiss;
+endproperty
+
+property p_error_free;
+	seq_error_free |-> seq_not_correct_and_dismiss;
+endproperty
+
+property p_dismiss_mult;
+	seq_multiple |-> dismiss_o;
+endproperty
+
+property p_correct_first;
+	(seq_first_error ##0 !multiple_i) implies ##1 correct_o;
+endproperty
+
+property p_dismiss_second;
+	seq_second_error implies  ##1 dismiss_o;
+endproperty
+
+// make assertion on properties to be checked
+a_not_both:				assert property (@(posedge clk) p_not_both      );
+a_error_free:			assert property (@(posedge clk) p_error_free    );
+a_mult_dismiss:		assert property (@(posedge clk) p_dismiss_mult  );
+a_correct_first:	assert property (@(posedge clk) p_correct_first );
+a_dismiss_second: assert property (@(posedge clk) p_dismiss_second);
+
+endmodule
+
+// bind the verification IP to the design
+
+bind atm atm_property_suite inst_atm_property_suite(.*);

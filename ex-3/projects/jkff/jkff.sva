@@ -1,0 +1,54 @@
+// @lang=sva @ts=2
+
+module jkff_property_suite(clk, j_i, k_i, q_o);
+
+input logic clk;
+input logic j_i,k_i;
+input logic q_o;
+
+// sequence definitions
+sequence seq_j;
+	j_i ##0 !k_i;
+endsequence
+
+sequence seq_k;
+	!j_i ##0 k_i;
+endsequence
+
+sequence seq_jk;
+	j_i ##0 k_i;
+endsequence
+
+sequence seq_jk_n;
+	!j_i ##0 !k_i;
+endsequence
+
+
+// property definitions
+property p_j;
+	seq_j |=> q_o;
+endproperty
+
+property p_k;
+	seq_k |=> !q_o;
+endproperty
+
+property p_jk;
+	seq_jk |=> q_o == !$past(q_o);
+endproperty
+
+property p_jk_n;
+	seq_jk_n |=> $stable(q_o);
+endproperty
+
+// make assertion on properties to be checked
+a_only_j:  assert property (@(posedge clk) p_j);
+a_only_k:  assert property (@(posedge clk) p_k);
+a_both_jk: assert property (@(posedge clk) p_jk);
+a_none_jk: assert property (@(posedge clk) p_jk_n);
+
+endmodule
+
+// bind the verification IP to the design
+
+bind jkff jkff_property_suite inst_jkff_property_suite(.*);
