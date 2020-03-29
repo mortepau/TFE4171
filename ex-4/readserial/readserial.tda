@@ -20,33 +20,13 @@ parameter READDATA = 1;
 
 `begin_tda(ops)
 
+// Sequences
 sequence reset_sequence;
 	!reset_n;
 endsequence;
 
-property reset;
-	reset_sequence |=>
-		
-	t ##0 state_s == IDLE and
-	t ##0 !valid and
-	t ##0 !cnt_en and
-	t ##0 cnt_s == 0;
-endproperty;
-
 sequence idle_sequence;
-	rxd and state_s == IDLE and cnt_s == 0 and !cnt_en;
-endsequence;
-
-property stay_in_idle;
-	t ##0 idle_sequence
-
-	implies
-
-	t ##1 (state_s == IDLE and !valid and cnt_s == 0 and !cnt_en);
-endproperty;
-
-sequence start_sequence;
-	!rxd and state_s == IDLE and cnt_s == 0 and !cnt_en;
+	state_s == IDLE and cnt_s == 0 and !cnt_en;
 endsequence;
 
 sequence in_idle_counter_is_0;
@@ -57,10 +37,25 @@ sequence in_idle_counter_not_enabled;
 	state_s == IDLE and !cnt_en;
 endsequence;
 
+// Properties
+property reset;
+	reset_sequence |=>
+		
+    t ##0 (state_s == IDLE and !valid and !cnt_en and cnt_s == 0);
+endproperty;
+
+property stay_in_idle;
+	t ##0 (idle_sequence and rxd)
+
+	implies
+
+	t ##1 (idle_sequence and !valid);
+endproperty;
+
 property read_byte;
 	logic [7:0] tmp;
 
-	t ##0 start_sequence and
+	t ##0 (idle_sequence and rxd) and
 	t ##0 in_idle_counter_is_0 and
 	t ##0 in_idle_counter_not_enabled and
 	t ##8 set_freeze(tmp, 
@@ -85,11 +80,7 @@ property read_byte;
 	t ##6 (state_s == READDATA and !valid) and
 	t ##7 (state_s == READDATA and !valid) and
 	t ##8 (state_s == READDATA and !valid) and
-	t ##9 data == tmp and
-	t ##9 valid and
-	t ##9 state_s == IDLE and
-	t ##9 !cnt_en and
-	t ##9 cnt_s == 0;
+	t ##9 (idle_sequence and valid and data == tmp);
 endproperty;
 
 property in_idle_counter_not_enabled__step;
@@ -128,13 +119,13 @@ property in_idle_counter_is_0__base;
 endproperty;
 
 // Assert properties
-a_reset: assert property (@(posedge clk) reset);
-a_stay_in_idle: assert property (@(posedge clk) stay_in_idle);
-a_read_byte: assert property (@(posedge clk) disable iff (!reset_n) read_byte);
-a_in_idle_counter_not_enabled__step: assert property (@(posedge clk) disable iff (!reset_n) in_idle_counter_not_enabled__step);
-a_in_idle_counter_not_enabled__base: assert property (@(posedge clk) in_idle_counter_not_enabled__base);
-a_in_idle_counter_is_0__step: assert property (@(posedge clk) disable iff (!reset_n) in_idle_counter_is_0__step);
-a_in_idle_counter_is_0__base: assert property (@(posedge clk) in_idle_counter_is_0__base);
+a_reset:                                assert property (@(posedge clk) reset);
+a_stay_in_idle:                         assert property (@(posedge clk) stay_in_idle);
+a_read_byte:                            assert property (@(posedge clk) disable iff (!reset_n) read_byte);
+a_in_idle_counter_not_enabled__step:    assert property (@(posedge clk) disable iff (!reset_n) in_idle_counter_not_enabled__step);
+a_in_idle_counter_not_enabled__base:    assert property (@(posedge clk) in_idle_counter_not_enabled__base);
+a_in_idle_counter_is_0__step:           assert property (@(posedge clk) disable iff (!reset_n) in_idle_counter_is_0__step);
+a_in_idle_counter_is_0__base:           assert property (@(posedge clk) in_idle_counter_is_0__base);
 
 `end_tda
 
