@@ -73,7 +73,7 @@ property read_byte;
 	implies 
 	
 	t ##1 (state_s == READDATA and !valid) [*8] and
-	t ##9 (state_s == IDLE and cnt_s == 0 and !cnt_en and valid and data == tmp);
+	t ##9 (idle_sequence and valid and data == tmp);
 endproperty;
 
 property in_idle_counter_not_enabled__step;
