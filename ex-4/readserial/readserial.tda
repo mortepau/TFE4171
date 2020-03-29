@@ -41,7 +41,7 @@ endsequence;
 property reset;
 	reset_sequence |=>
 		
-    t ##0 (state_s == IDLE and !valid and !cnt_en and cnt_s == 0);
+    t ##0 (state_s == IDLE and !cnt_en and cnt_s == 0 and !valid);
 endproperty;
 
 property stay_in_idle;
@@ -72,15 +72,8 @@ property read_byte;
 
 	implies 
 	
-	t ##1 (state_s == READDATA and !valid) and
-	t ##2 (state_s == READDATA and !valid) and
-	t ##3 (state_s == READDATA and !valid) and
-	t ##4 (state_s == READDATA and !valid) and
-	t ##5 (state_s == READDATA and !valid) and
-	t ##6 (state_s == READDATA and !valid) and
-	t ##7 (state_s == READDATA and !valid) and
-	t ##8 (state_s == READDATA and !valid) and
-	t ##9 (idle_sequence and valid and data == tmp);
+	t ##1 (state_s == READDATA and !valid) [*8] and
+	t ##9 (state_s == IDLE and cnt_s == 0 and !cnt_en and valid and data == tmp);
 endproperty;
 
 property in_idle_counter_not_enabled__step;
