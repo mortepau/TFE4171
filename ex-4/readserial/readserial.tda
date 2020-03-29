@@ -55,7 +55,7 @@ endproperty;
 property read_byte;
 	logic [7:0] tmp;
 
-	t ##0 (idle_sequence and rxd) and
+	t ##0 (idle_sequence and !rxd) and
 	t ##0 in_idle_counter_is_0 and
 	t ##0 in_idle_counter_not_enabled and
 	t ##8 set_freeze(tmp, 
